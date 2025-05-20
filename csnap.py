@@ -88,12 +88,12 @@ def snap_snippet(
     for n, snippet in enumerate(snippets, start=1):
         try:
             tmp_in = tempfile.NamedTemporaryFile(
-                delete=False, prefix="csnap.", mode="w"
+                delete=False, prefix="codesnap.", mode="w"
             )
             # Currently leaks with no solution
             tmp_out = tempfile.NamedTemporaryFile(
                 delete=False,
-                prefix="csnap.%02i." % n,
+                prefix="codesnap.%02i." % n,
                 mode="rb",
                 suffix=".png",
             )
@@ -308,11 +308,7 @@ def format_text(
         if text[-1] == "\n" and end == "\n":
             end = ""
 
-        text = (
-            text.replace("__AMP__", "&amp;")
-            .replace("__LT__", "&lt;")
-            .replace("\\", "\\\\")
-        )
+        text = text.replace("__AMP__", "&amp;").replace("__LT__", "&lt;")
 
         text = begin + text + end
 
